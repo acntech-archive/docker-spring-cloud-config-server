@@ -1,0 +1,59 @@
+########################
+# LOGGING Config       #
+########################
+logging:
+  path: ${ENV_SPRING_CLOUD_CONFIG_SERVER_LOGS}
+
+
+########################
+# SPRING Config        #
+########################
+spring:
+  cloud:
+    config:
+      server:
+        default-label: develop
+        git:
+          search-paths:
+            - '{application}'
+            - '{application}/{profile}'
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+  main:
+    banner-mode: 'off'
+
+########################
+# ACTUATOR Config      #
+########################
+management:
+  context-path: /management
+  security:
+    enabled: false
+
+endpoints:
+  enabled: false
+  health: # ikke sensitiv, Shows application health information
+    enabled: true
+  info: # ikke sensitiv, Displays arbitrary application info.
+    enabled: true
+  env: # sensitiv, Exposes properties from Spring’s ConfigurableEnvironment.
+    enabled: true
+  beans: # sensitiv, Displays a complete list of all the Spring beans in your application.
+    enabled: true
+  autoconfig: # sensitiv, Displays an auto-configuration report showing all auto-configuration candidates and the reason why they ‘were’ or ‘were not’ applied.
+    enabled: true
+  configprops: # sensitiv, Displays a collated list of all @ConfigurationProperties.
+    enabled: true
+  dump: # sensitiv, Performs a thread dump.
+    enabled: true
+  metrics: # sensitiv, Shows ‘metrics’ information for the current application.
+    enabled: true
+  trace: # sensitiv, Displays trace information (by default the last 100 HTTP requests).
+    enabled: true
+  loggers: # sensitiv, Shows and modifies the configuration of loggers in the application.
+    enabled: true
+  flyway: # sensitiv, Shows any Flyway database migrations that have been applied.
+    enabled: true

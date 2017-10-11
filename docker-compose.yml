@@ -1,0 +1,6 @@
+version: "2"
+
+services:
+  acntech_spring_cloud_config_server:
+    build: .
+    image: acntechie/spring-cloud-config-server:latest
